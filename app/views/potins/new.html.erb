@@ -1,0 +1,24 @@
+<h1>Créer un nouveau potin</h1>
+<h1><%= @potin.title %> <%= link_to "Modifier", edit_potin_path(@potin) %></h1>
+<h1><%= @potin.title %> <%= link_to "Modifier", edit_potin_path(@potin) %> <%= link_to "Supprimer", potin_path(@potin), method: :delete, data: { confirm: "Êtes-vous sûr ?" } %></h1>
+
+<%= form_with(model: @potin) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <div>
+    <%= form.submit "Créer le potin" %>
+  </div>
+<% end %>
+
+<article class="potin">
+  <h2><%= link_to potin.title, potin %></h2>
+  <p><%= potin.content %></p>
+  <p>Publié par <%= potin.user.first_name %> <%= potin.user.last_name %> le <%= l potin.created_at, format: :long %></p>
+  <p>Nombre de commentaires : <%= potin.comments.count %></p>
+</article>

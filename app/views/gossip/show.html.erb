@@ -1,0 +1,20 @@
+<h1>Gossip#show</h1>
+<p>Find me in app/views/gossip/show.html.erb</p>
+<h1><%= @potin.title %></h1>
+
+<p><%= @potin.content %></p>
+
+<% if user_signed_in? && current_user == @potin.user %>
+  <%= link_to "Modifier ce potin", edit_potin_path(@potin) %>
+  <%= link_to "Supprimer ce potin", @potin, method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
+<% end %>
+
+<h2>Ajouter un commentaire</h2>
+<%= form_with(model: [@potin, @potin.comments.build], local: true) do |form| %>
+  <%= form.label :content %>
+  <%= form.text_area :content, rows: 4 %>
+
+  <%= form.submit "Ajouter" %>
+<% end %>
+<h2>Commentaires</h2>
+<%= render @potin.comments %>

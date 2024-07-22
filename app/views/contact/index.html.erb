@@ -1,0 +1,14 @@
+<h1>Contact#index</h1>
+<p>Find me in app/views/contact/index.html.erb</p>
+<h1>Tous les potins</h1>
+
+<% @potins.each do |potin| %>
+  <div>
+    <h2><%= link_to potin.title, potin %></h2>
+    <p><%= potin.content %></p>
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to "Créer un nouveau potin", new_potin_path %>
+<% end %>

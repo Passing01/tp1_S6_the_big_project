@@ -1,0 +1,15 @@
+<h1>Modifier le potin</h1>
+
+<%= form_with(model: @potin) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, value: @potin.title %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content, value: @potin.content %>
+  </div>
+  <div>
+    <%= form.submit "Mettre à jour le potin" %>
+  </div>
+<% end %>
