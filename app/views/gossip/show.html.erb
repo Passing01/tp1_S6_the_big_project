@@ -17,4 +17,9 @@
   <%= form.submit "Ajouter" %>
 <% end %>
 <h2>Commentaires</h2>
+
+<p>Likes: <%= @gossip.likes.count %></p>
+
 <%= render @potin.comments %>
+<%= link_to 'Like', gossip_likes_path(@gossip), method: :post %>
+<%= link_to 'Unlike', gossip_like_path(@gossip, @like), method: :delete %>
